@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Artikel extends Model
 {
     public $fillable = [
-        "judul", "isi"
+        "judul", "deskripsi", "isi"
     ];
 }

@@ -39,9 +39,7 @@
                         </div>
     
                         <div class="description">
-                            <p>
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem dicta voluptates quasi exercitationem saepe nulla in maiores illo odio. Fugit sunt delectus vitae dolores eos autem fugiat facilis officia ex.
-                            </p>
+                            {{ $artikel->deskripsi }}
                         </div>
                             
                         <div class="extra">

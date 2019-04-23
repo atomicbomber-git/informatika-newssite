@@ -75018,6 +75018,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 
 __webpack_require__(/*! summernote/dist/summernote-lite */ "./node_modules/summernote/dist/summernote-lite.js");
+
+__webpack_require__(/*! ./configs/summernote */ "./resources/js/configs/summernote.js");
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -75157,6 +75159,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/configs/summernote.js":
+/*!********************************************!*\
+  !*** ./resources/js/configs/summernote.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+window.summernote_height = 400;
 
 /***/ }),
 

@@ -8,6 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Artikel::class, function (Faker $faker) {
     return [
         "judul" => ucwords($faker->text(25)),
+        "deskripsi" => $faker->text(),
         "isi" => $faker->realText(1000)
     ];
 });

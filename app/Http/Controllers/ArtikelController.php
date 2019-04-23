@@ -25,8 +25,9 @@ class artikelController extends Controller
     public function store()
     {
         $data = $this->validate(request(), [
-            "judul" => "required",
-            "isi" => "required",
+            "judul" => "required|string",
+            "deskripsi" => "required|string",
+            "isi" => "required|string",
         ]);
 
         Artikel::create($data);

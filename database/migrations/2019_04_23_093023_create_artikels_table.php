@@ -17,6 +17,7 @@ class CreateartikelsTable extends Migration
             $table->bigIncrements('id');
 
             $table->string("judul");
+            $table->text("deskripsi")->nullable();
             $table->longText("isi");
 
             $table->timestamps();

@@ -14,7 +14,7 @@
 
             <div class="field{{ $errors->has("judul") ? " error" : "" }}">
                 <label> Judul: </label>
-                <input name="judul" placeholder="Judul" type="text">
+                <input name="judul" value="{{ old("judul") }}" placeholder="Judul" type="text">
                 @error("judul")
                 <div class="ui pointing red basic label">
                     {{ $errors->first("judul") }}
@@ -22,9 +22,24 @@
                 @enderror
             </div>
 
+            <div class="field{{ $errors->has("deskripsi") ? " error" : "" }}">
+                <label> Deskripsi: </label>
+                <textarea name="deskripsi" col="30" row="10" placeholder="Deskripsi">{{ old("deskripsi") }}</textarea>
+                @error("deskripsi")
+                <div class="ui pointing red basic label">
+                    {{ $errors->first("deskripsi") }}
+                </div>
+                @enderror
+            </div>
+
             <div class="ui field">
                 <label for="isi"> Isi: </label>
-                <textarea name="" id="isi" cols="30" rows="10"></textarea>
+                <textarea name="isi" id="isi" cols="30" rows="10">{{ old("isi") }}</textarea>
+                @error("isi")
+                <div class="ui pointing red basic label">
+                    {{ $errors->first("isi") }}
+                </div>
+                @enderror
             </div>
             
            <div class="t-a:r">
@@ -43,8 +58,9 @@
 <script>
     $(document).ready(function() {
         $("#isi").summernote({
-            height: 400
-        });
+            height: window.summernote_height
+        })
+        // .summernote("inserttext", {{ old("isi") }})
     })
 </script>
 @endsection
