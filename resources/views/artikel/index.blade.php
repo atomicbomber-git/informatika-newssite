@@ -61,7 +61,7 @@
                                     Sunting
                                 </a>
 
-                                <form method="POST" action="{{ route("artikel.delete", $artikel) }}" class="ui form d:i-b">
+                                <form method="POST" action="{{ route("artikel.delete", $artikel) }}" class="ui form confirmed d:i-b">
                                     @csrf
                                     <button class="ui button negative tiny">
                                         <i class="trash icon"></i>

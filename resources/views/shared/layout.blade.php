@@ -33,6 +33,24 @@
                 .closest('.message')
                 .transition('fade');
             });
+
+        $(".form.confirmed")
+            .submit(function (e) {
+                e.preventDefault();
+
+                window.swal({
+                    "icon": "warning",
+                    "text": "Apakah Anda yakin Anda ingin melakukan tindakan ini?",
+                    "dangerMode": true,
+                    "buttons": ["Tidak", "Ya"]
+                })
+                .then(is_ok => {
+                    if (is_ok) {
+                        $(this).off("submit")
+                            .submit()
+                    }
+                })
+            })
     </script>
     @endpush
 

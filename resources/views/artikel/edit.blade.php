@@ -29,7 +29,7 @@
     @include("shared.message")
 
     <div class="ui segment">
-        <form method="POST" enctype="multipart/form-data" action="{{ route("artikel.update", $artikel) }}" class="ui form">
+        <form method="POST" enctype="multipart/form-data" action="{{ route("artikel.update", $artikel) }}" class="ui form confirmed">
             @csrf
 
             <div class="field{{ $errors->has("judul") ? " error" : "" }}">
