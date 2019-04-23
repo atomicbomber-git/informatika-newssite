@@ -22,14 +22,13 @@
         </div>
     </div>
 
-
     <h1 class="ui dividing header">
         <i class="plus icon"></i>
         Artikel Baru
     </h1>
 
     <div class="ui segment">
-        <form method="POST" action="{{ route("artikel.store") }}" class="ui form">
+        <form method="POST" enctype="multipart/form-data" action="{{ route("artikel.store") }}" class="ui form">
             @csrf
 
             <div class="field{{ $errors->has("judul") ? " error" : "" }}">
@@ -38,6 +37,16 @@
                 @error("judul")
                 <div class="ui pointing red basic label">
                     {{ $errors->first("judul") }}
+                </div>
+                @enderror
+            </div>
+
+            <div class="field{{ $errors->has("gambar") ? " error" : "" }}">
+                <label> Gambar Utama: </label>
+                <input name="gambar" value="{{ old("gambar") }}" placeholder="Gambar Utama" type="file" accept="img/*">
+                @error("gambar")
+                <div class="ui pointing red basic label">
+                    {{ $errors->first("gambar") }}
                 </div>
                 @enderror
             </div>
@@ -52,7 +61,7 @@
                 @enderror
             </div>
 
-            <div class="ui field">
+            <div class="ui field{{ $errors->has("isi") ? " error" : "" }}">
                 <label for="isi"> Isi: </label>
                 <textarea name="isi" id="isi" cols="30" rows="10">{{ old("isi") }}</textarea>
                 @error("isi")
@@ -74,7 +83,7 @@
 
 @endsection
 
-@section('extra-scripts')
+@push('extra-scripts')
 <script>
     $(document).ready(function() {
         $("#isi").summernote({
@@ -82,4 +91,4 @@
         })
     })
 </script>
-@endsection
+@endpush

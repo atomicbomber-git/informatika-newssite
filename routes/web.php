@@ -26,4 +26,5 @@ Route::group(['prefix' => '/artikel', 'as' => 'artikel.'], function() {
     Route::get('/edit/{artikel}', 'ArtikelController@edit')->name('edit');
     Route::post('/update/{artikel}', 'ArtikelController@update')->name('update');
     Route::post('/delete/{artikel}', 'ArtikelController@delete')->name('delete');
+    Route::get('/main_image/{artikel}', 'ArtikelController@mainImage')->name('main_image');
 });

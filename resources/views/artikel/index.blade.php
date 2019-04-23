@@ -35,10 +35,10 @@
             @foreach ($artikels as $artikel)
             <div class="ui items">
                 <div class="item">
-                    {{-- <div class="image">
-                        <img src="" alt="">
-                    </div> --}}
-    
+                    <div class="image">
+                        <img src="{{ route("artikel.main_image", $artikel) }}" alt="{{ $artikel->judul }}">
+                    </div>
+
                     <div class="content">
                         <a href="" class="header">
                             {{ $artikel->judul }}

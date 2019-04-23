@@ -25,8 +25,7 @@
     <script src="{{ asset('js/vendor.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 
-    @yield("extra-scripts")
-
+    @push("extra-scripts")
     <script>
         $('.message .close')
             .on('click', function() {
@@ -35,5 +34,8 @@
                 .transition('fade');
             });
     </script>
+    @endpush
+
+    @stack("extra-scripts")
 </body>
 </html>

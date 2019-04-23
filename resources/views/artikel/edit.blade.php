@@ -29,7 +29,7 @@
     @include("shared.message")
 
     <div class="ui segment">
-        <form method="POST" action="{{ route("artikel.update", $artikel) }}" class="ui form">
+        <form method="POST" enctype="multipart/form-data" action="{{ route("artikel.update", $artikel) }}" class="ui form">
             @csrf
 
             <div class="field{{ $errors->has("judul") ? " error" : "" }}">
@@ -40,6 +40,30 @@
                     {{ $errors->first("judul") }}
                 </div>
                 @enderror
+            </div>
+
+            <div class="field{{ $errors->has("gambar") ? " error" : "" }}">
+                <label> Gambar Utama: </label>
+
+                <div class="ui segment label yellow m-t:10">
+                    <i class="warning icon"></i>
+                    Kosongkan kolom di bawah ini jika Anda tidak ingin mengganti gambar yang telah ada.
+                </div>
+
+                <input name="gambar" value="{{ old("gambar") }}" placeholder="Gambar Utama" type="file" accept="img/*">
+                @error("gambar")
+                <div class="ui pointing red basic label">
+                    {{ $errors->first("gambar") }}
+                </div>
+                @enderror
+            </div>
+
+            <div class="field">
+                <label> Gambar Sekarang: </label>
+
+                <div class="ui medium image">
+                    <img src="{{ route("artikel.main_image", $artikel) }}" alt="{{ $artikel->judul }}">
+                </div>
             </div>
 
             <div class="field{{ $errors->has("deskripsi") ? " error" : "" }}">
@@ -74,7 +98,7 @@
 
 @endsection
 
-@section('extra-scripts')
+@push('extra-scripts')
 <script>
     $(document).ready(function() {
         $("#isi").summernote({
@@ -82,4 +106,4 @@
         })
     })
 </script>
-@endsection
+@endpush

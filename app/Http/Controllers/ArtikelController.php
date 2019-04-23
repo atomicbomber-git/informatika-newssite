@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Artikel;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 
 class artikelController extends Controller
 {
@@ -22,15 +24,20 @@ class artikelController extends Controller
         return view("artikel.create");
     }
     
-    public function store()
+    public function store(Request $request, Response $response)
     {
         $data = $this->validate(request(), [
             "judul" => "required|string",
             "deskripsi" => "required|string",
+            "gambar" => "required|file|mimes:jpg,jpeg,png",
             "isi" => "required|string",
         ]);
 
-        Artikel::create($data);
+        DB::transaction(function() use($data) {
+            $article = Artikel::create($data);
+            $article->addMediaFromRequest("gambar")
+                ->toMediaCollection(Artikel::GAMBAR_UTAMA_IMAGE);
+        });
 
         return redirect()
             ->route("artikel.index")
@@ -42,15 +49,23 @@ class artikelController extends Controller
         return view("artikel.edit", compact("artikel"));
     }
     
-    public function update(Artikel $artikel)
+    public function update(Request $request, Artikel $artikel)
     {
         $data = $this->validate(request(), [
             "judul" => "required|string",
             "deskripsi" => "required|string",
+            "gambar" => "nullable|file|mimes:jpg,jpeg,png",
             "isi" => "required|string",
         ]);
 
-        $artikel->update($data);
+        DB::transaction(function() use($data, $request, $artikel) {
+            $artikel->update($data);
+            
+            if ($request->hasFile("gambar")) {
+                $artikel->addMediaFromRequest("gambar")
+                    ->toMediaCollection(Artikel::GAMBAR_UTAMA_IMAGE);
+            }
+        });
 
         return back()
             ->with("message.success", __("messages.update.success"));
@@ -61,5 +76,11 @@ class artikelController extends Controller
         $artikel->delete();
         return back()
             ->with("message.success", __("messages.delete.success"));
+    }
+
+    public function mainImage(Artikel $artikel)
+    {
+        return response()
+            ->file($artikel->getFirstMediaPath(Artikel::GAMBAR_UTAMA_IMAGE));
     }
 }
