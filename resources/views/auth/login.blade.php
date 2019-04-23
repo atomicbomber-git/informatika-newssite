@@ -9,7 +9,7 @@
             
             <div class="field{{ $errors->has("username") ? " error" : "" }}">
                 <label> Nama Pengguna: </label>
-                <input name="username" placeholder="Nama Pengguna" type="text">
+                <input name="username" value="{{ old("username") }}" placeholder="Nama Pengguna" type="text">
                 @error("username")
                 <div class="ui pointing red basic label">
                     {{ $errors->first("username") }}
@@ -19,7 +19,7 @@
 
             <div class="field{{ $errors->has("password") ? " error" : "" }}">
                 <label> Kata Sandi: </label>
-                <input name="password" placeholder="Kata Sandi" type="password">
+                <input name="password" value="{{ old("password") }}" placeholder="Kata Sandi" type="password">
                 @error("password")
                 <div class="ui pointing red basic label">
                     {{ $errors->first("password") }}

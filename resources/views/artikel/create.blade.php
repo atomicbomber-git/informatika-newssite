@@ -3,6 +3,26 @@
 @section('content')
 
 <div class="ui container">
+
+    <div class="ui segment">
+        <div class="ui small breadcrumb">
+            <a class="section">
+                {{ config("app.name") }}
+            </a>
+            <i class="right chevron icon divider"></i>
+
+            <a class="section" href="{{ route('artikel.index') }}">
+                Artikel
+            </a>
+            <i class="right chevron icon divider"></i>
+
+            <div class="active section">
+                Artikel Baru
+            </div>
+        </div>
+    </div>
+
+
     <h1 class="ui dividing header">
         <i class="plus icon"></i>
         Artikel Baru
@@ -60,7 +80,6 @@
         $("#isi").summernote({
             height: window.summernote_height
         })
-        // .summernote("inserttext", {{ old("isi") }})
     })
 </script>
 @endsection

@@ -39,10 +39,21 @@ class artikelController extends Controller
     
     public function edit(Artikel $artikel)
     {
+        return view("artikel.edit", compact("artikel"));
     }
     
     public function update(Artikel $artikel)
     {
+        $data = $this->validate(request(), [
+            "judul" => "required|string",
+            "deskripsi" => "required|string",
+            "isi" => "required|string",
+        ]);
+
+        $artikel->update($data);
+
+        return back()
+            ->with("message.success", __("messages.update.success"));
     }
     
     public function delete(Artikel $artikel)

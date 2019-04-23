@@ -3,6 +3,18 @@
 @section('content')
 
 <div class="ui container">
+    <div class="ui segment">
+        <div class="ui small breadcrumb">
+            <a class="section" href="{{ url("") }}">
+                {{ config("app.name") }}
+            </a>
+
+            <i class="right chevron icon divider"></i>
+            <div class="active section">
+                Artikel
+            </div>
+        </div>
+    </div>
 
     <h1 class="ui dividing header">
         <i class="newspaper icon"></i>
@@ -41,11 +53,15 @@
                         <div class="description">
                             {{ $artikel->deskripsi }}
                         </div>
-                            
+                        
                         <div class="extra">
-
                             <div class="t-a:r">
-                                <form method="POST" action="{{ route("artikel.delete", $artikel) }}" class="ui form">
+                                <a class="ui button tiny" href="{{ route("artikel.edit", $artikel) }}">
+                                    <i class="pencil icon"></i>
+                                    Sunting
+                                </a>
+
+                                <form method="POST" action="{{ route("artikel.delete", $artikel) }}" class="ui form d:i-b">
                                     @csrf
                                     <button class="ui button negative tiny">
                                         <i class="trash icon"></i>
