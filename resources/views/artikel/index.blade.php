@@ -35,9 +35,9 @@
             @foreach ($artikels as $artikel)
             <div class="ui items">
                 <div class="item">
-                    <div class="image">
+                    {{-- <div class="image">
                         <img src="" alt="">
-                    </div>
+                    </div> --}}
     
                     <div class="content">
                         <a href="" class="header">
@@ -81,6 +81,11 @@
             @endforeach
         </div>
     </div>
+
+    <div class="ui center aligned container">
+        {{ $artikels->links() }}
+    </div>
+
 </div>
 
 @endsection

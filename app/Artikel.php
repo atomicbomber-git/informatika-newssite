@@ -9,4 +9,6 @@ class Artikel extends Model
     public $fillable = [
         "judul", "deskripsi", "isi"
     ];
+
+    protected $perPage = 5;
 }

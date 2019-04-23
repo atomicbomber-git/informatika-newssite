@@ -17,6 +17,10 @@
 
     @yield('content')
 
+    <div style="height: 30px">
+        {{-- A space --}}
+    </div>
+
     <script src="{{ asset('js/manifest.js') }}"></script>
     <script src="{{ asset('js/vendor.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
