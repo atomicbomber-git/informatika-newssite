@@ -17,4 +17,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');\
+
+Route::group(['prefix' => '/artikel', 'as' => 'artikel.'], function() {
+    Route::get('/index', 'ArtikelController@index')->name('index');
+    Route::get('/create', 'ArtikelController@create')->name('create');
+    Route::post('/store', 'ArtikelController@store')->name('store');
+    Route::get('/edit/{artikel}', 'ArtikelController@edit')->name('edit');
+    Route::post('/update/{artikel}', 'ArtikelController@update')->name('update');
+    Route::post('/delete/{artikel}', 'ArtikelController@delete')->name('delete');
+});

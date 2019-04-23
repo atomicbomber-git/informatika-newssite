@@ -1511,6 +1511,11 @@ code-point-at@^1.0.0:
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
   integrity sha1-DQcLTQQ6W+ozovGkDi7bPZpMz3c=
 
+codemirror@^5.46.0:
+  version "5.46.0"
+  resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.46.0.tgz#be3591572f88911e0105a007c324856a9ece0fb7"
+  integrity sha512-3QpMge0vg4QEhHW3hBAtCipJEWjTJrqLLXdIaWptJOblf1vHFeXLNtFhPai/uX2lnFCehWNk4yOdaMR853Z02w==
+
 collection-visit@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/collection-visit/-/collection-visit-1.0.0.tgz#4bc0373c164bc3291b4d368c829cf1a80a59dca0"
@@ -5888,6 +5893,11 @@ stylehacks@^4.0.0:
     postcss "^7.0.0"
     postcss-selector-parser "^3.0.0"
 
+summernote@^0.8.11:
+  version "0.8.11"
+  resolved "https://registry.yarnpkg.com/summernote/-/summernote-0.8.11.tgz#89bb3472e75758359dbf1d7125cf1889c429f197"
+  integrity sha512-j+YbSK2ox1RZGeD5E/+6k57bvqhQLxiaazSj9zHBXOJnCuc0LZPSIGwyTlMaAGWpo6FlkXfjGS93hEDkV3zVJw==
+
 supports-color@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-2.0.0.tgz#535d045ce6b6363fa40117084629995e9df324c7"
@@ -5997,6 +6007,11 @@ timsort@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/timsort/-/timsort-0.3.0.tgz#405411a8e7e6339fe64db9a234de11dc31e02bd4"
   integrity sha1-QFQRqOfmM5/mTbmiNN4R3DHgK9Q=
+
+tinymce@^5.0.3:
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/tinymce/-/tinymce-5.0.3.tgz#40fa8658b5bdf58e7f04c816b38e1b06f96f6cfe"
+  integrity sha512-x7D0ttqn176Z4CWQIITMjcEtMGUjiaK0Y2FN2vO8DiyUeIHCdr70jJDSoGhuXtXX70Sw4Bd5UFfqIn/bG3HXcg==
 
 to-arraybuffer@^1.0.0:
   version "1.0.1"

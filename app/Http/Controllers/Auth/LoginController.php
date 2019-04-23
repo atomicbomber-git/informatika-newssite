@@ -33,7 +33,7 @@ class LoginController extends Controller
     // Route to go to after log in
     public function redirectTo()
     {
-        return route('home');
+        return route('artikel.index');
     }
 
     // Column to be used as username

@@ -5,6 +5,11 @@
             Halaman Utama
         </a>
 
+        <a class="item" href="{{ route('artikel.index') }}">
+            <i class="newspaper icon"></i>
+            Artikel
+        </a>
+
         <div class="right menu">
             @auth
             <div class="item">
