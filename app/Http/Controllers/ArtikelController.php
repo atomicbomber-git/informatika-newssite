@@ -21,11 +21,14 @@ class artikelController extends Controller
     
     public function create()
     {
+        $this->authorize("create", Artikel::class);
         return view("artikel.create");
     }
     
     public function store(Request $request, Response $response)
     {
+        $this->authorize("create", Artikel::class);
+
         $data = $this->validate(request(), [
             "judul" => "required|string",
             "deskripsi" => "required|string",
@@ -46,11 +49,14 @@ class artikelController extends Controller
     
     public function edit(Artikel $artikel)
     {
+        $this->authorize("update", $artikel);
         return view("artikel.edit", compact("artikel"));
     }
     
     public function update(Request $request, Artikel $artikel)
     {
+        $this->authorize("update", $artikel);
+
         $data = $this->validate(request(), [
             "judul" => "required|string",
             "deskripsi" => "required|string",
@@ -73,6 +79,8 @@ class artikelController extends Controller
     
     public function delete(Artikel $artikel)
     {
+        $this->authorize("delete", $artikel);
+
         $artikel->delete();
         return back()
             ->with("message.success", __("messages.delete.success"));

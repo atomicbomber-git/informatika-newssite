@@ -5,10 +5,12 @@
             Halaman Utama
         </a>
 
+        @can("index", \App\Artikel::class)
         <a class="item" href="{{ route('artikel.index') }}">
             <i class="newspaper icon"></i>
             Artikel
         </a>
+        @endcan
 
         <div class="right menu">
             @auth
