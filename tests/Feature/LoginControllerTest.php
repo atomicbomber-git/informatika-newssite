@@ -12,7 +12,7 @@ class LoginControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_user_can_login()
+    public function test_admin_can_login()
     {
         $password = 'password';
         $userData = factory(User::class)
@@ -24,6 +24,6 @@ class LoginControllerTest extends TestCase
         ]);
         
         $response->assertSessionHasNoErrors();
-        $response->assertRedirect(route('home'));
+        $response->assertRedirect(route('artikel.index'));
     }
 }

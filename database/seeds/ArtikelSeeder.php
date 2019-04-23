@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Artikel;
+use Illuminate\Http\UploadedFile;
 
 class ArtikelSeeder extends Seeder
 {
