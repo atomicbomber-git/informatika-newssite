@@ -1,4 +1,4 @@
-@extends('shared.layout')
+@extends('shared.admin-layout')
 @section('title', 'Daftar artikel')
 @section('content')
 
@@ -56,6 +56,11 @@
                         
                         <div class="extra">
                             <div class="t-a:r">
+                                <a href="{{ route("artikel.show", $artikel) }}" class="ui button tiny">
+                                    <i class="eye outline icon"></i>
+                                    Baca
+                                </a>
+
                                 <a class="ui button tiny" href="{{ route("artikel.edit", $artikel) }}">
                                     <i class="pencil icon"></i>
                                     Sunting

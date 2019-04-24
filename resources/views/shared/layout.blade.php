@@ -11,17 +11,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
-    @include('shared.navbar')
-    
-    <div style="height: 100px">
-        {{-- A space --}}
-    </div>
-
-    @yield('content')
-
-    <div style="height: 30px">
-        {{-- A space --}}
-    </div>
+    @yield('main-content')
 
     <script src="{{ asset('js/manifest.js') }}"></script>
     <script src="{{ asset('js/vendor.js') }}"></script>

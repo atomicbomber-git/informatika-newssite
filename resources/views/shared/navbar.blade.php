@@ -1,12 +1,10 @@
-<div class="ui inverted top fixed huge menu">
+<div class="ui inverted top fixed small menu">
     <div class="ui container">
-        <a class="item" href="{{ route('home') }}">
-            <i class="home icon"></i>
-            Halaman Utama
-        </a>
+
+        @include("shared.admin-brand-menu-item")
 
         @can("index", \App\Artikel::class)
-        <a class="item" href="{{ route('artikel.index') }}">
+        <a class="item {{ Route::is("artikel.*") ? "active" : "" }}" href="{{ route('artikel.index') }}">
             <i class="newspaper icon"></i>
             Artikel
         </a>

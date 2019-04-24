@@ -17,9 +17,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');\
+Route::get('/', 'GuestHomeController@show')->name('guest.home.show');
+
+Route::get("/admin", function () {
+    return redirect()->route("artikel.index");
+});
 
 Route::group(['prefix' => '/artikel', 'as' => 'artikel.'], function() {
+    Route::get('/show/{artikel}', 'ArtikelController@show')->name('show');
     Route::get('/index', 'ArtikelController@index')->name('index');
     Route::get('/create', 'ArtikelController@create')->name('create');
     Route::post('/store', 'ArtikelController@store')->name('store');

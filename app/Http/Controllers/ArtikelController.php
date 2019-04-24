@@ -88,6 +88,11 @@ class artikelController extends Controller
             ->with("message.success", __("messages.delete.success"));
     }
 
+    public function show(Artikel $artikel)
+    {
+        return view("artikel.show", compact("artikel"));
+    }
+
     public function mainImage(Artikel $artikel)
     {
         return response()

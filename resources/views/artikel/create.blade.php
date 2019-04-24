@@ -1,4 +1,4 @@
-@extends('shared.layout')
+@extends('shared.admin-layout')
 @section('title', 'Artikel Baru')
 @section('content')
 
