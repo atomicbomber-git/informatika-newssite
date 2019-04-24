@@ -11,6 +11,8 @@ class artikelController extends Controller
 {
     public function index()
     {
+        $this->authorize("index", Artikel::class);
+
         $artikels = Artikel::query()
             ->orderByDesc("updated_at")
             ->orderByDesc("created_at")
