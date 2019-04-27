@@ -58,9 +58,9 @@ $(document).ready(function() {
     $("#tts-play").click(function() {
         
         let text_list = []
-        text_list.push($("#title").text())
+        text_list.push($("#title").text().trim())
         $("#artikel *").each(function (index, elem) {
-            text_list.push( $(elem).text() )
+            text_list.push( $(elem).text().trim() )
         })
 
         function textToSpeech(text_list, counter) {
