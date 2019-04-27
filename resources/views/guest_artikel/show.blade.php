@@ -41,7 +41,7 @@ $(document).ready(function() {
         $(button).click(function() {
             let text = $(elem).text()
 
-            $.post("http://nlp-service.democlient.club/", { text: text })
+            $.post("https://nlp-service.democlient.club/", { text: text })
                 .done(response => {
                     responsiveVoice.speak(response.data.text, "Indonesian Female");
                 })
