@@ -1,4 +1,4 @@
-@extends('shared.layout')
+@extends('shared.guest-layout')
 @section('title', 'Baca Artikel')
 @section('content')
 
