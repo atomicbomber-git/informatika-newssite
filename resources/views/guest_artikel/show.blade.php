@@ -16,8 +16,8 @@
 
     <div class="ui segment">
         <div class='t-a:r m-b:2'>
-            <button id="tts-play" class='ui icon button red'>
-                Text to Speech
+            <button id="tts-play" data-state="stopped" class='ui icon button green'>
+                <span class="label"> Play Text to Speech </span>
                 <i class='icon play'></i>
             </button>
         </div>
@@ -96,7 +96,8 @@ function playTTS() {
 }
 
 $(document).ready(function() {
-    responsiveVoice.speak($("#title").text().trim(), "Indonesian Female");
+    
+    window.setTimeout(responsiveVoice.speak($("#title").text().trim(), "Indonesian Female"), 1000)
 
     $("#tts-play").click(function() {
         switch($(this).data("state")) {
