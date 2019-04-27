@@ -35,8 +35,8 @@
     <div class="ui segment">
 
         <div class='t-a:r m-b:2'>
-            <button id="tts-play" class='ui icon button red'>
-                Text to Speech
+            <button id="tts-play" data-state="stopped" class='ui icon button green'>
+                <span class="label"> Play Text to Speech </span>
                 <i class='icon play'></i>
             </button>
         </div>
@@ -54,37 +54,87 @@
 
 <script>
 
-$(document).ready(function() {
-    $("#tts-play").click(function() {
-        
-        let text_list = []
-        text_list.push($("#title").text().trim())
-        $("#artikel *").each(function (index, elem) {
-            text_list.push( $(elem).text().trim() )
-        })
+function showPauseButton() {
+    let play_pause_button = $("#tts-play")
+    play_pause_button
+        .toggleClass("green", false)
+        .toggleClass("red", true)
 
-        function textToSpeech(text_list, counter) {
-            $.post("https://nlp-service.democlient.club/", { text: text_list[counter] })
-                .done(response => {
-                    responsiveVoice.speak(
-                        response.data.text,
-                        "Indonesian Female",
-                        {
-                            onend: function() {
-                                counter++
-                                if (counter < text_list.length) {
-                                    textToSpeech(text_list, counter)
-                                }
+    play_pause_button.find("span.label").text("Pause Text to Speech")
+    play_pause_button.find("i.icon")
+        .toggleClass("play", false)
+        .toggleClass("pause", true)
+}
+
+function showPlayButton() {
+    let play_pause_button = $("#tts-play")
+    play_pause_button
+        .toggleClass("green", true)
+        .toggleClass("red", false)
+
+    play_pause_button.find("span.label").text("Play Text to Speech")
+    play_pause_button.find("i.icon")
+        .toggleClass("play", true)
+        .toggleClass("pause", false)
+}
+
+function playTTS() {
+    let text_list = []
+    $("#artikel *").each(function (index, elem) {
+        text_list.push( $(elem).text().trim() )
+    })
+
+    function textToSpeech(text_list, counter, finish_cb) {
+        $.post("https://nlp-service.democlient.club/", { text: text_list[counter] })
+            .done(response => {
+                responsiveVoice.speak(
+                    response.data.text,
+                    "Indonesian Female",
+                    {
+                        onend: function() {
+                            counter++
+                            if (counter < text_list.length) {
+                                textToSpeech(text_list, counter)
+                            }
+                            else {
+                                finish_cb()
                             }
                         }
-                    );
-                })
-                .fail((xhr, status, error) => {
-                    let response = JSON.parse(xhr.responseText);
-                });
-        }
+                    }
+                );
+            })
+            .fail((xhr, status, error) => {
+                let response = JSON.parse(xhr.responseText);
+            });
+    }
 
-        textToSpeech(text_list, 0)
+    textToSpeech(text_list, 0, function() {
+        showPlayButton()
+        $("#tts-play").data("state", "stopped")
+    })
+}
+
+$(document).ready(function() {
+    responsiveVoice.speak($("#title").text().trim(), "Indonesian Female");
+
+    $("#tts-play").click(function() {
+        switch($(this).data("state")) {
+            case "stopped":
+                playTTS()
+                showPauseButton()
+                $(this).data("state", "playing")
+                break;
+            case "playing":
+                responsiveVoice.pause()
+                showPlayButton()
+                $(this).data("state", "paused")
+                break;
+            case "paused":
+                responsiveVoice.resume()
+                showPauseButton()
+                $(this).data("state", "playing")
+                break;
+        }
     })
 })
 
