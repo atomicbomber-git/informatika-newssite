@@ -28,11 +28,11 @@
         </div>
     </h1>
 
-    <div class="ui segment">
-        <div class="ui image">
-            <img src="{{ route("artikel.main_image", $artikel) }}" alt="{{ $artikel->judul }}">
-        </div>
+    <div class="ui image">
+        <img src="{{ route("artikel.main_image", $artikel) }}" alt="{{ $artikel->judul }}">
+    </div>
 
+    <div class="ui segment">
         <div class="m-t:5">
             {!! $artikel->isi !!}
         </div>

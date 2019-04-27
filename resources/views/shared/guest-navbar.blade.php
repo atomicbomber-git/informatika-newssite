@@ -8,10 +8,10 @@
                         <i class="icon home"></i>
                         Beranda
                     </a>
-                    <a class="item">
+                    {{-- <a class="item">
                         <i class="icon newspaper"></i>
                         Artikel
-                    </a>
+                    </a> --}}
                 </div>
             </div>
         </div>

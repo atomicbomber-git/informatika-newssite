@@ -85,10 +85,24 @@
 
 @push('extra-scripts')
 <script>
-    $(document).ready(function() {
-        $("#isi").summernote({
-            height: window.summernote_height
-        })
+
+$(document).ready(function() {
+    tinyMCE.init({
+        selector: '#isi',
+        body_class: 'tinymce-editor',
+        plugins: 'lists,image,imagetools',
+        image_caption: true,
+        file_picker_callback: window.tinymce_file_picker_callback,
+        height: 400,
+        toolbar: [
+            'undo redo | styleselect | bold italic | numlist bullist | alignleft aligncenter alignright | image'
+        ],
+        content_css: '{{ asset('css/app.css') }}',
     })
+    .then(editors => {
+        editors[0].setContent(`{!! old('isi') !!}`)
+    })
+})
+
 </script>
 @endpush

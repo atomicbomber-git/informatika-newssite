@@ -2,11 +2,12 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-require('summernote/dist/summernote-lite')
-require('./configs/summernote')
-
 // Add Sweetalert
 window.swal = require("sweetalert")
+
+// Add TinyMCE
+require('tinymce');
+window.tinymce_file_picker_callback = require('./tinymce_filepicker_callback.js')
 
 /**
  * The following block of code may be used to automatically register your

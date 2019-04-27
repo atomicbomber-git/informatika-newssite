@@ -90,7 +90,6 @@
     <div class="ui center aligned container">
         {{ $artikels->links() }}
     </div>
-
 </div>
 
 @endsection

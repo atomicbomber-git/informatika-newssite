@@ -14,31 +14,30 @@
         <h2 class="ui header">
             Berita Terbaru
         </h2>
-
-        <div class="ui relaxed stackable padded grid">
-            @foreach ($artikels->chunk(2) as $artikel_chunk)
-            <div class="two column row">
-                @foreach ($artikel_chunk as $artikel)
-                <div class="ui column">
-                    <div class="ui segment items">
-                        <div class="item">
-                            <div class="ui small image">
-                                <img src="{{ route('artikel.main_image', $artikel) }}" alt="{{ $artikel->judul }}">
-                            </div>
-                            <div class="content">
-                                <a class="header" href="#"> {{ $artikel->judul }} </a>
-                                <div class="meta">
-                                    {{ $artikel->created_at }}
-                                </div>
-                                <div class="description">
-                                    {{ \Illuminate\Support\Str::limit($artikel->deskripsi, 200) }}
-                                </div>
-                            </div>
-                        </div>
+        
+        <div class="ui segment items">
+            @foreach ($artikels as $artikel)
+            <div class="item">
+                <div class="ui small image">
+                    <img src="{{ route('artikel.main_image', $artikel) }}" alt="{{ $artikel->judul }}">
+                </div>
+                <div class="content">
+                    <a class="header" href="{{ route("guest-artikel.show", $artikel) }}">
+                        {{ $artikel->judul }}
+                    </a>
+                    <div class="meta">
+                        {{ $artikel->created_at }}
+                    </div>
+                    <div class="description">
+                        {{ \Illuminate\Support\Str::limit($artikel->deskripsi, 200) }}
                     </div>
                 </div>
-                @endforeach
             </div>
+
+            @if (!$loop->last)
+            <div class="ui divider"> </div>
+            @endif
+
             @endforeach
         </div>
     </div>

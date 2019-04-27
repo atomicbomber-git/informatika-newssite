@@ -33,3 +33,8 @@ Route::group(['prefix' => '/artikel', 'as' => 'artikel.'], function() {
     Route::post('/delete/{artikel}', 'ArtikelController@delete')->name('delete');
     Route::get('/main_image/{artikel}', 'ArtikelController@mainImage')->name('main_image');
 });
+
+Route::group(['prefix' => '/guest-artikel', 'as' => 'guest-artikel.'], function() {
+    Route::get('/index', 'GuestArticleController@index')->name('index');
+    Route::get('/show/{artikel}', 'GuestArticleController@show')->name('show');
+});

@@ -13,4 +13,7 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css')
-   .extract(["vue", "sweetalert", "summernote"])
+   .extract(["vue", "sweetalert", "tinymce"])
+   .copy("node_modules/tinymce/themes", "public/js/themes")
+   .copy("node_modules/tinymce/plugins", "public/js/plugins")
+   .copy("node_modules/tinymce/skins", "public/js/skins")
