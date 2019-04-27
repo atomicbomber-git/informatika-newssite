@@ -13,8 +13,9 @@ class ArtikelSeeder extends Seeder
      */
     public function run()
     {
+        
         DB::transaction(function() {
-            factory(Artikel::class, 200)
+            factory(Artikel::class, (int) $this->command->ask("Berapa banyak artikel?"))
                 ->create();
         });
     }
